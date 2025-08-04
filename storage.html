@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Piezoelectric Mall Energy Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 30px;
+            background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        #calculateBtn {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        #calculateBtn:hover {
+            background-color: #16a085;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-left: 6px solid #2980b9;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+
+        .excess {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e8f9e9;
+            border-left: 6px solid #27ae60;
+            border-radius: 6px;
+            color: #14532d;
+        }
+
+        .excess h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #1b5e20;
+        }
+
+        .excess .amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .no-excess {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fdecea;
+            border-left: 6px solid #e74c3c;
+            border-radius: 6px;
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Piezoelectric Mall Energy Calculator</h2>
+
+        <div class="input-group">
+            <label for="tileCount">Number of Piezoelectric Tiles:</label>
+            <input type="text" id="tileCount" value="10000" />
+        </div>
+
+        <div class="input-group">
+            <label for="visitors">Visitors per Day:</label>
+            <input type="text" id="visitors" value="100000" />
+        </div>
+
+        <div class="input-group">
+            <label for="steps">Average Steps per Visitor on Tiles:</label>
+            <input type="text" id="steps" value="100" />
+        </div>
+
+        <div class="input-group">
+            <label for="powerPerStep">Energy Generated per Step (mWh):</label>
+            <input type="text" id="powerPerStep" value="50" />
+        </div>
+
+        <div class="input-group">
+            <label for="usage">Electricity Used per Day (Wh):</label>
+            <input type="text" id="usage" value="300000" />
+        </div>
+
+        <button id="calculateBtn" onclick="calculateEnergy()">Calculate</button>
+
+        <div id="result"></div>
+        <div id="excessEnergyBox"></div>
+    </div>
+
+    <script>
+        function calculateEnergy() {
+            const tileCount = parseInt(document.getElementById('tileCount').value.trim());
+            const visitors = parseInt(document.getElementById('visitors').value.trim());
+            const steps = parseInt(document.getElementById('steps').value.trim());
+            const powerPerStep = parseFloat(document.getElementById('powerPerStep').value.trim());
+            const usage = parseFloat(document.getElementById('usage').value.trim());
+
+            const resultBox = document.getElementById('result');
+            const excessBox = document.getElementById('excessEnergyBox');
+            resultBox.innerHTML = '';
+            excessBox.innerHTML = '';
+
+            if (
+                isNaN(tileCount) ||
+                isNaN(visitors) ||
+                isNaN(steps) ||
+                isNaN(powerPerStep) ||
+                isNaN(usage)
+            ) {
+                resultBox.innerHTML =
+                    "<span class='error'>⚠ Please enter valid numeric values in all fields.</span>";
+                return;
+            }
+
+            const totalSteps = visitors * steps;
+            const totalEnergyWh = (totalSteps * powerPerStep) / 1000;
+            const remainingEnergy = totalEnergyWh - usage;
+
+            let output = "---- Energy Generation Report ----\n";
+            output += Tiles Installed: ${tileCount}\n;
+            output += Visitors per Day: ${visitors}\n;
+            output += Total Steps on Tiles: ${totalSteps}\n;
+            output += Total Energy Generated: ${totalEnergyWh.toFixed(2)} Wh\n;
+            output += Electricity Consumed: ${usage.toFixed(2)} Wh\n;
+            output += Remaining Energy: ${remainingEnergy.toFixed(2)} Wh\n;
+
+            resultBox.textContent = output;
+
+            if (remainingEnergy > 0) {
+                excessBox.innerHTML = `
+                    <div class="excess">
+                        <h3>⚡ Remaining Sellable Energy</h3>
+                        <div class="amount">${remainingEnergy.toFixed(2)} Wh</div>
+                        <p>This energy can be sold to the grid or stored for later use.</p>
+                    </div>`;
+            } else if (remainingEnergy < 0) {
+                excessBox.innerHTML = `
+                    <div class="no-excess">
+                        ⚠ Energy generation is less than the usage by ${Math.abs(remainingEnergy).toFixed(2)} Wh.
+                        Consider optimizing usage or increasing tile coverage.
+                    </div>`;
+            } else {
+                excessBox.innerHTML = `
+                    <div class="no-excess">
+                        👍 Energy generated is equal to the usage. No excess or deficit.
+                    </div>`;
+            }
+        }
+    </script>
+</body>
+</html>

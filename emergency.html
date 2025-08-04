@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency SOS System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Electric Vehicle Safety Monitor</h1>
+    <p>Status: <span id="status">Connected ✅</span></p>
+    <button id="simulate-disconnect">Simulate Accident (Sensor Disconnect)</button>
+    
+    <div id="emergency-alert" class="hidden">
+      <h2>🚨 EMERGENCY DETECTED</h2>
+      <p>Helmet sensor connection lost. Possible accident!</p>
+      <a href="tel:112" class="call-button">📞 Call Emergency Services (112)</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1d2b64, #f8cdda);
+  color: white;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#status {
+  font-weight: bold;
+  color: lightgreen;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #c0392b;
+}
+
+#emergency-alert {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ff4c4c;
+  animation: pulse 1.5s infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+.call-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 18px;
+  background-color: white;
+  color: red;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+</style>
+<script>
+    document.getElementById('simulate-disconnect').addEventListener('click', function () {
+  // Simulate sensor disconnect
+  const statusEl = document.getElementById('status');
+  const alertEl = document.getElementById('emergency-alert');
+
+  statusEl.textContent = 'Disconnected ❌';
+  statusEl.style.color = 'red';
+
+  alertEl.classList.remove('hidden');
+
+  // Auto-trigger emergency after delay (optional)
+  setTimeout(() => {
+    alert('Calling emergency services...');
+    window.location.href = 'tel:112'; // Replace with actual emergency number if needed
+  }, 3000); // Wait 3 seconds before triggering call
+});
+
+</script>

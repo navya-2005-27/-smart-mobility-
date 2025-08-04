@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piezoelectric Tails - Sustainable Energy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .hero {
+            background: url('hero.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            animation: fadeIn 2s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .comparison-table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+        .comparison-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .advantage-section {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .advantage-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex-basis: 30%;
+            transition: transform 0.3s ease;
+        }
+        .advantage-card:hover {
+            transform: translateY(-10px);
+        }
+        .advantage-card img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .advantage-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .advantage-card p {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div>
+            <h1>Power the Future with Piezoelectric Tails</h1>
+            <p>Revolutionizing Energy Generation</p>
+            <a href="#learn-more" class="button">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Learn More Section -->
+    <div id="learn-more" class="section">
+        <h2>What Are Piezoelectric Tails?</h2>
+        <p>Piezoelectric tails are innovative energy-harvesting systems designed to convert mechanical vibrations into electricity. Installed in areas with high foot traffic or on moving vehicles, they collect energy from everyday movements, which can be stored and used to power devices or contribute to the grid.</p>
+        <button class="button" onclick="document.location.href='details.html'">Detailed Info</button>
+    </div>
+
+    <!-- Comparison Section -->
+    <div class="section">
+        <h2>Comparison: Piezoelectric Tails vs Traditional Energy Sources</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Piezoelectric Tails</th>
+                    <th>Solar Panels</th>
+                    <th>Wind Turbines</th>
+                    <th>Hydropower</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Energy Source</td>
+                    <td>Human/Vehicle Movement</td>
+                    <td>Sunlight</td>
+                    <td>Wind</td>
+                    <td>Water Flow</td>
+                </tr>
+                <tr>
+                    <td>Installation Flexibility</td>
+                    <td>High (can be placed anywhere)</td>
+                    <td>Limited (requires open spaces)</td>
+                    <td>Location-specific</td>
+                    <td>Location-specific</td>
+                </tr>
+                <tr>
+                    <td>Energy Storage</td>
+                    <td>Battery storage or direct usage</td>
+                    <td>Battery storage</td>
+                    <td>Battery storage</td>
+                    <td>Battery storage</td>
+                </tr>
+                <tr>
+                    <td>Maintenance</td>
+                    <td>Low</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Environmental Impact</td>
+                    <td>Minimal</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>High (affects aquatic life)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Advantages Section -->
+    <div class="section">
+        <h2>Advantages of Piezoelectric Tails</h2>
+        <div class="advantage-section">
+            <div class="advantage-card">
+                
+                <h3>Energy Efficiency</h3>
+                <p>Piezoelectric tails generate energy from everyday activities, offering a sustainable way to harness energy from previously untapped sources.</p>
+            </div>
+            <div class="advantage-card">
+                
+                <h3>Eco-Friendly</h3>
+                <p>Unlike traditional energy sources, piezoelectric technology has a minimal environmental impact, making it a cleaner energy solution.</p>
+            </div>
+            <div class="advantage-card">
+               
+                <h3>Cost-Effective</h3>
+                <p>Piezoelectric tails have low maintenance costs and can generate power without the need for expensive infrastructure or land use.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real-World Applications Section -->
+    <div class="section">
+        <h2>Global Implementation of Piezoelectric Tails</h2>
+        <p>Countries like Japan, the Netherlands, and the US have already started implementing piezoelectric systems in highways, pedestrian walkways, and urban infrastructure. These systems have successfully generated renewable energy while promoting sustainability and energy efficiency in urban settings.</p>
+        <button class="button" onclick="document.location.href='real-world.html'">See Real-World Examples</button>
+    </div>
+
+</body>
+</html>
